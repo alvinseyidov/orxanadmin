@@ -92,13 +92,13 @@
 						<span class="menu-title"> &nbsp; Warehouse</span>
 						</a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item ">
 						<a class="nav-link" href="{% url 'add'%}">
 						<i class="fa fa-plus">&nbsp;&nbsp;</i>
 						<span class="menu-title">&nbsp;Add To Materials</span>
 						</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item active">
 						<a class="nav-link" href="{% url 'out'%}">
 						<i class="fa fa-minus">&nbsp;&nbsp;</i>
 						<span class="menu-title">&nbsp;Out To Materials</span>
@@ -188,7 +188,7 @@
 														</tr>
 													</thead>
 													<tbody>
-														{% for material in addmaterials.all %}
+														{% for material in outmaterials.all %}
 														<tr>
 																<td>{{material.product_type}}</td>
 																<td>{{material.input_quality}}</td>

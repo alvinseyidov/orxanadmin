@@ -18,7 +18,7 @@ def addmaterial(request):
             model_instance = form.save(commit=False)
             model_instance.input_quality = request.POST.get("input_quality")
             model_instance.unit = request.POST.get("unit")
-            model_instance.date = 'request.POST.get("date")'
+            model_instance.date = request.POST.get("date")
             model_instance.comment = request.POST.get("comment")
             model_instance.save()
             addmaterials = AddMaterial.objects.all()
