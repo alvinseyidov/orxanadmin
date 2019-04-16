@@ -26,7 +26,7 @@ SECRET_KEY = 'i=@s=zbeqgp0h*1@y^*z^88&vuedj%e^r7krg&dj$&pt)1&p=4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['orxanadmin.herokuapp.com']
 
 
 # Application definition
