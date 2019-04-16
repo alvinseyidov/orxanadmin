@@ -107,25 +107,19 @@
 		        <div class="content-wrapper">
 		          <div class="row grid-margin">
 		            <div class="col-12">
+
 									<form method="post">
 										{% csrf_token %}
 		              <div class="card">
 		                <div class="card-body">
 		                  <h4 class="card-title">Add To Material</h4>
-		                  <div class="form-group row">
-		                    <div class="col-lg-3">
-		                      <label class="col-form-label">Product Type</label>
-		                    </div>
-		                    <div class="col-lg-8">
-		                      <input class="form-control" maxlength="25" name="defaultconfig" id="defaultconfig" type="text" placeholder="Type Something..">
-		                    </div>
-		                  </div>
+											{{ form.as_p }}
 		                  <div class="form-group row">
 		                    <div class="col-lg-3">
 		                      <label class="col-form-label">Input Quality</label>
 		                    </div>
 		                    <div class="col-lg-8">
-		                      <input class="form-control" maxlength="20" name="defaultconfig-2" id="defaultconfig-2" type="text" placeholder="Type Something..">
+		                      <input class="form-control" name="input_quality" maxlength="20" name="defaultconfig-2" id="defaultconfig-2" type="text" placeholder="Type Something..">
 		                    </div>
 		                  </div>
 		                  <div class="form-group row">
@@ -133,28 +127,23 @@
 		                      <label class="col-form-label">Unit</label>
 		                    </div>
 		                    <div class="col-lg-8">
-		                      <input class="form-control" maxlength="10" name="defaultconfig-3" id="defaultconfig-3" type="text" placeholder="Type Something..">
+		                      <input type="number" class="form-control" name="unit" maxlength="10" name="defaultconfig-3" id="defaultconfig-3" type="text" placeholder="Type Something..">
 		                    </div>
 		                  </div>
 											<div class="form-group row">
-											 <div class="col-lg-3">
-												 <label class="col-form-label">Date</label>
-											 </div>
-											 <div class="card-body" style="    padding: 0 69px 0 13px;">
-                      <div id="datepicker-popup" class="input-group date datepicker">
-                        <input type="text" class="form-control">
-                        <span class="input-group-addon input-group-append border-left">
-                          <span class="mdi mdi-calendar input-group-text"></span>
-                        </span>
-                      </div>
-                    </div>
-										 </div>
+		                    <div class="col-lg-3">
+		                      <label class="col-form-label">Date</label>
+		                    </div>
+		                    <div class="col-lg-8">
+		                      <input type="date" class="form-control" name="date" maxlength="10" name="defaultconfig-3" id="defaultconfig-3" type="text" placeholder="Type Something..">
+		                    </div>
+		                  </div>
 		                  <div class="form-group row">
 		                    <div class="col-lg-3">
 		                      <label class="col-form-label">Comment</label>
 		                    </div>
 		                    <div class="col-lg-8">
-		                      <textarea id="maxlength-textarea" class="form-control" maxlength="100" rows="2" placeholder="This textarea has a limit of 100 chars."></textarea>
+		                      <input type="text" name="comment" class="form-control">
 		                    </div>
 		                  </div>
 											<input class="btn btn-primary" type="submit" value="Submit">
@@ -165,7 +154,54 @@
 		          </div>
 
 
+
 		        </div>
+						<div class="content-wrapper">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">Data table</h4>
+									<div class="row">
+										<div class="col-12">
+											<div class="table-responsive">
+												<table id="order-listing" class="table">
+													<thead>
+														<tr>
+																<th>Product Type #</th>
+																<th>Input Quality </th>
+																<th>Unit</th>
+																<th>Date</th>
+																<th>Comment</th>
+
+																<th>Status</th>
+																<th>Actions</th>
+														</tr>
+													</thead>
+													<tbody>
+														{% for material in addmaterials.all %}
+														<tr>
+																<td>{{material.product_type}}</td>
+																<td>{{material.input_quality}}</td>
+																<td>{{material.unit}}</td>
+																<td>{{material.date}}</td>
+																<td>{{material.comment}}</td>
+
+																<td>
+																	<label class="badge badge-info">On hold</label>
+																</td>
+																<td>
+																	<button class="btn btn-outline-primary">View</button>
+																</td>
+														</tr>
+													{% endfor %}
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
 		        <!-- content-wrapper ends -->
 		        <!-- partial:../../partials/_footer.html -->
 		        <div class="footer-wrapper">

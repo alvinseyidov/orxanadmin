@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home import views as home_views
+from addmaterial import views as add_views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
@@ -25,7 +26,7 @@ urlpatterns = [
     path('', home_views.dashboard, name='dashboard'),
     path('user/', home_views.edit_profile, name='user'),
     path('password/', home_views.change_password, name='changepassword'),
-    path('add/', home_views.addmaterial, name='add'),
+    path('add/', add_views.addmaterial, name='add'),
     path('out/', home_views.dashboard, name='out'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
