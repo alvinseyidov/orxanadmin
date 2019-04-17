@@ -3,16 +3,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from home.forms import EditProfileForm
 from django.contrib.auth import update_session_auth_hash
-from addmaterial.models import AddMaterial
+from addmaterial.models import AddMaterial,ProductType
+from outmaterial.models import OutMaterial
+from django.contrib.auth.models import User
 # Create your views here.
 
 @login_required(login_url='/login/')
 def dashboard(request):
     addmaterials = AddMaterial.objects.all()
-    context = {
-        "addmaterials":addmaterials
-    }
-    return render(request, 'index.html', context)
+    producttype = ProductType.objects.all()
+
+    return render(request, "index.html", {'producttypes': producttype})
+
 
 @login_required(login_url='/login/')
 def edit_profile(request):

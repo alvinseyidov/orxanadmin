@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import AddMaterial
+from .models import AddMaterial,ProductType
 from .forms import AddMaterialForm
 # Create your views here.
 
@@ -8,6 +8,7 @@ from .forms import AddMaterialForm
 @login_required(login_url='/login/')
 def addmaterial(request):
     addmaterials = AddMaterial.objects.all()
+    producttype = ProductType.objects.all()
 
 
 
@@ -20,10 +21,11 @@ def addmaterial(request):
             model_instance.unit = request.POST.get("unit")
             model_instance.date = request.POST.get("date")
             model_instance.comment = request.POST.get("comment")
+            model_instance.user = request.user
             model_instance.save()
             addmaterials = AddMaterial.objects.all()
 
-            return render(request, 'addmaterial.html', {'addmaterials': addmaterials})
+            return render(request, 'addmaterial.html', {'addmaterials': addmaterials,'producttypes': producttype})
 
 
 
@@ -32,4 +34,4 @@ def addmaterial(request):
         form = AddMaterialForm()
 
 
-    return render(request, "addmaterial.html", {'addmaterials': addmaterials,'form': form})
+    return render(request, "addmaterial.html", {'addmaterials': addmaterials,'form': form,'producttypes': producttype})

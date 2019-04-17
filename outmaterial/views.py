@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import OutMaterial
+from addmaterial.models import AddMaterial,ProductType
 from .forms import OutMaterialForm
 
 
@@ -9,7 +10,7 @@ from .forms import OutMaterialForm
 @login_required(login_url='/login/')
 def outmaterial(request):
     outmaterials = OutMaterial.objects.all()
-
+    producttype = ProductType.objects.all()
 
 
     if request.method == 'POST':
@@ -24,7 +25,7 @@ def outmaterial(request):
             model_instance.save()
             outmaterials = OutMaterial.objects.all()
 
-            return render(request, 'outmaterial.html', {'outmaterials': outmaterials})
+            return render(request, 'outmaterial.html', {'outmaterials': outmaterials,'producttypes': producttype})
 
 
 
@@ -33,4 +34,4 @@ def outmaterial(request):
         form = OutMaterialForm()
 
 
-    return render(request, "outmaterial.html", {'outmaterials': outmaterials,'form': form})
+    return render(request, "outmaterial.html", {'outmaterials': outmaterials,'form': form,'producttypes': producttype})

@@ -1,4 +1,4 @@
-{% load static %}
+{% load static custom_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -178,7 +178,7 @@
 													<thead>
 														<tr>
 																<th>Product Type #</th>
-																<th>Input Quality </th>
+																	<th>Unit</th>
 																<th>Unit</th>
 																<th>Date</th>
 																<th>Comment</th>
@@ -188,21 +188,28 @@
 														</tr>
 													</thead>
 													<tbody>
-														{% for material in addmaterials.all %}
-														<tr>
-																<td>{{material.product_type}}</td>
-																<td>{{material.input_quality}}</td>
-																<td>{{material.unit}}</td>
-																<td>{{material.date}}</td>
-																<td>{{material.comment}}</td>
 
-																<td>
-																	<label class="badge badge-info">On hold</label>
-																</td>
-																<td>
-																	<button class="btn btn-outline-primary">View</button>
-																</td>
-														</tr>
+														{% for producttype in producttypes %}
+															{% if producttype.addmaterial.count > 0 %}
+															<tr>
+																	<td>{{producttype.type}}</td>
+																	<td>{{ producttype.id|unitsum }}</td>
+
+
+																	<td>
+																		<label class="badge badge-info">On hold</label>
+																	</td>
+																	<td>
+																		<button class="btn btn-outline-primary">View</button>
+																	</td>
+															</tr>
+
+
+															{% endif %}
+														{% endfor %}
+
+														{% for material in addmaterials.all %}
+
 													{% endfor %}
 													</tbody>
 												</table>

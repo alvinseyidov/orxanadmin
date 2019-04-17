@@ -5,4 +5,4 @@ class AddMaterialForm(forms.ModelForm):
 
     class Meta:
         model = AddMaterial
-        fields = ['product_type']
+        fields = ['product_typeadd']

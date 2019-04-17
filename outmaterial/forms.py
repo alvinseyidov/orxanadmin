@@ -5,4 +5,4 @@ class OutMaterialForm(forms.ModelForm):
 
     class Meta:
         model = OutMaterial
-        fields = ['product_type']
+        fields = ['product_typeout']
