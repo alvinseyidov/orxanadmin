@@ -8,9 +8,12 @@ from django.contrib.auth.models import User
 
 class OutMaterial(models.Model):
     product_typeout = models.ForeignKey(ProductType,related_name='outmaterial',  on_delete=models.CASCADE,  null=True, blank=True)
-    input_quality = models.CharField(max_length=100)
+    output_quality = models.CharField(max_length=100, null=True, blank=True)
     user = models.ForeignKey(User, related_name='outmaterial', on_delete=models.CASCADE, null=True, blank=True)
-    unit = models.IntegerField(max_length=100)
+    unit = models.IntegerField(max_length=100, null=True, blank=True)
+    received = models.IntegerField(max_length=100, null=True, blank=True)
+    used_type = models.CharField(max_length=100, null=True, blank=True)
+    id_number = models.CharField(max_length=100, null=True, blank=True)
     date = models.DateField(null=True, blank=True)
     comment = models.CharField(max_length=100, null=True, blank=True)
 

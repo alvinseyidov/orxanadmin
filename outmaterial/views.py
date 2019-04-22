@@ -22,6 +22,10 @@ def outmaterial(request):
             model_instance.unit = request.POST.get("unit")
             model_instance.date = request.POST.get("date")
             model_instance.comment = request.POST.get("comment")
+            model_instance.received = request.POST.get("received")
+            model_instance.id_number = request.POST.get("idnumber")
+            model_instance.used_type = request.POST.get("usedtype")
+            model_instance.user = request.user
             model_instance.save()
             outmaterials = OutMaterial.objects.all()
 

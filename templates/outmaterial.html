@@ -29,7 +29,27 @@
 	    $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 	  } );
 	  </script>
+		<style>
+		#id_product_typeout {
+				margin-left: 200px;
+				height: 41px;
+				margin-bottom: 30px;
+				border-radius: 8px;
+				width: 268px;
+				border-color: #e3e3e3;
+				padding: 0px 0 0 29px;
+		}
 
+		#datepicker {
+		    height: 41px;
+		    margin-bottom: 30px;
+		    border-radius: 8px;
+		    width: 268px;
+		    border-color: #e3e3e3;
+		    padding: 0px 0 0 29px;
+		    border: 1px #e3e3e3 solid;
+		}
+	</style>
 	</head>
 
 	<body>
@@ -123,14 +143,23 @@
 										{% csrf_token %}
 		              <div class="card">
 		                <div class="card-body">
-		                  <h4 class="card-title">Add To Material</h4>
+		                  <h4 class="card-title">Out Material</h4>
 											{{ form.as_p }}
 		                  <div class="form-group row">
 		                    <div class="col-lg-3">
 		                      <label class="col-form-label">Input Quality</label>
 		                    </div>
 		                    <div class="col-lg-8">
-		                      <input class="form-control" name="input_quality" maxlength="20" name="defaultconfig-2" id="defaultconfig-2" type="text" placeholder="Type Something..">
+		                      <input class="form-control" name="input_quality" maxlength="20"  id="defaultconfig-2" type="text" placeholder="Type Something..">
+		                    </div>
+		                  </div>
+
+											<div class="form-group row">
+		                    <div class="col-lg-3">
+		                      <label class="col-form-label">Used Type</label>
+		                    </div>
+		                    <div class="col-lg-8">
+		                      <input class="form-control" name="usedtype" maxlength="20"  id="defaultconfig-2" type="text" placeholder="Type Something..">
 		                    </div>
 		                  </div>
 		                  <div class="form-group row">
@@ -138,9 +167,25 @@
 		                      <label class="col-form-label">Unit</label>
 		                    </div>
 		                    <div class="col-lg-8">
-		                      <input type="number" class="form-control" name="unit" maxlength="10" name="defaultconfig-3" id="defaultconfig-3" type="text" placeholder="Type Something..">
+		                      <input type="number" class="form-control" name="unit" maxlength="10"  id="defaultconfig-3" type="text" placeholder="Type Something..">
 		                    </div>
 		                  </div>
+											<div class="form-group row">
+											 <div class="col-lg-3">
+												 <label class="col-form-label">Received</label>
+											 </div>
+											 <div class="col-lg-8">
+												 <input type="number" class="form-control" name="received" maxlength="10"  type="text" placeholder="Type Something..">
+											 </div>
+										 </div>
+										 <div class="form-group row">
+											 <div class="col-lg-3">
+												 <label class="col-form-label">Id Number</label>
+											 </div>
+											 <div class="col-lg-8">
+												 <input type="number" class="form-control" name="idnumber" maxlength="10"  id="defaultconfig-3" type="text" placeholder="Type Something..">
+											 </div>
+										 </div>
 											<div class="form-group row">
 		                    <div class="col-lg-3">
 		                      <label class="col-form-label">Date</label>
@@ -170,7 +215,7 @@
 						<div class="content-wrapper">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Data table</h4>
+									<h4 class="card-title">Outed Material</h4>
 									<div class="row">
 										<div class="col-12">
 											<div class="table-responsive">
@@ -178,12 +223,9 @@
 													<thead>
 														<tr>
 																<th>Product Type #</th>
-																<th>Input Quality </th>
-																<th>Unit</th>
-																<th>Date</th>
-																<th>Comment</th>
 
-																<th>Status</th>
+																<th>Unit</th>
+
 																<th>Actions</th>
 														</tr>
 													</thead>
@@ -195,9 +237,6 @@
 																<td>{{ producttype.id|unitsum2 }}</td>
 
 
-																<td>
-																	<label class="badge badge-info">On hold</label>
-																</td>
 																<td>
 																	<button class="btn btn-outline-primary">View</button>
 																</td>

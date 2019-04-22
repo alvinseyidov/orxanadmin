@@ -28,8 +28,26 @@
 	    $( "#datepicker" ).datepicker();
 	    $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 	  } );
-	  </script>
-
+	  </script><style>
+		#id_product_typeadd {
+		    margin-left: 200px;
+		    height: 41px;
+		    margin-bottom: 30px;
+		    border-radius: 8px;
+		    width: 268px;
+		    border-color: #e3e3e3;
+		    padding: 0px 0 0 29px;
+		}
+		#datepicker {
+	    height: 41px;
+	    margin-bottom: 30px;
+	    border-radius: 8px;
+	    width: 268px;
+	    border-color: #e3e3e3;
+	    padding: 0px 0 0 29px;
+	    border: 1px #e3e3e3 solid;
+	}
+</style>
 	</head>
 
 	<body>
@@ -170,7 +188,7 @@
 						<div class="content-wrapper">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Data table</h4>
+									<h4 class="card-title">Added Materials</h4>
 									<div class="row">
 										<div class="col-12">
 											<div class="table-responsive">
@@ -179,11 +197,8 @@
 														<tr>
 																<th>Product Type #</th>
 																	<th>Unit</th>
-																<th>Unit</th>
-																<th>Date</th>
-																<th>Comment</th>
 
-																<th>Status</th>
+
 																<th>Actions</th>
 														</tr>
 													</thead>
@@ -196,9 +211,7 @@
 																	<td>{{ producttype.id|unitsum }}</td>
 
 
-																	<td>
-																		<label class="badge badge-info">On hold</label>
-																	</td>
+																	
 																	<td>
 																		<button class="btn btn-outline-primary">View</button>
 																	</td>
